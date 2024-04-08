@@ -36,13 +36,14 @@ body {
 #films li::before {
   content: "";
   
+  
 }
  
 .film {
   font-size: 15px;
   font-family: 'comic sans ms';
   text-transform: uppercase;
-  color: brown
+  color: black;
 }
 
 .sold-out {

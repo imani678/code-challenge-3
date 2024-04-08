@@ -93,4 +93,4 @@ function handleDeleteMovie(movieId) {
 
 function updateTicketsSold(movieId, tickets) {
     // Implementation to update server with new ticket count
-}
+};
