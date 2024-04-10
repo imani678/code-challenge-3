@@ -56,15 +56,15 @@ function handleMovieClick(movie) {
     info.querySelector("#showtime").textContent = movie.showtime;
     info.querySelector("#ticket-num").textContent = movie.capacity - movie.tickets_sold + " remaining tickets";
 
-    // Store the clicked movie ID
+   
     document.querySelector("#buy-ticket").dataset.movieId = movie.id;
 }
 
 function handleBuyTicket(e) {
-    // Get the movie ID from the button dataset
+    
     const movieId = document.querySelector("#buy-ticket").dataset.movieId;
 
-    // Get the number of remaining tickets
+    // number of remaining tickets
     const ticketDiv = document.querySelector("#ticket-num");
     let tickets = parseInt(ticketDiv.textContent.split(" ")[0]);
 
@@ -75,7 +75,7 @@ function handleBuyTicket(e) {
         alert("Sold out!");
     }
 
-    // Update tickets sold on the server
+    // Updating tickets sold
     updateTicketsSold(movieId, tickets);
 }
 
@@ -88,9 +88,28 @@ function handleDeleteMovie(movieId) {
             throw new Error('Failed to delete movie');
         }
     })
-    .catch(error => console.error('Error deleting movie:', error));
+    .catch(error => console.error('Error!', error));
 }
 
+
+//updating our movies
 function updateTicketsSold(movieId, tickets) {
-    // Implementation to update server with new ticket count
+    function updateTicketsSold(movieId, tickets) {
+        const updateData = {
+            tickets_sold: tickets
+        };
+    
+        fetch(`${filmEndpoints}/${movieId}`, {
+            method: 'PUT', //use of PUT
+        })
+         .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to update tickets sold');
+            }
+        })
+        .catch(error => console.error('Error updating:', error)); //catches errors and are logged into the console
+    }
+
+    
+    
 };
