@@ -1,3 +1,5 @@
+### live link [http://localhost:3000/films]
+
 # Flatdango
 
 Flatiron Movie Theater is open for business! You will be building out an
@@ -97,53 +99,56 @@ As a user, I can:
    be able to buy a ticket if the showing is sold out (if there are 0 tickets
    available). **A persistence mechanism is needed for this feature. Read the following paragraph for more details**.
 
-   When a ticket is purchased, you need to do the following 
-      - Persist the updated number of `tickets_sold` on
-      the server. Remember, the frontend shows the number of available tickets
-      based on the `tickets_sold` and the `capacity`, so only the `tickets_sold`
-      should be updated on the backend when a ticket is purchased. You will need to
-      make a request that follows this structure:
+   When a ticket is purchased, you need to do the following
 
-      ```json
-      PATCH /films/:id
+   - Persist the updated number of `tickets_sold` on
+     the server. Remember, the frontend shows the number of available tickets
+     based on the `tickets_sold` and the `capacity`, so only the `tickets_sold`
+     should be updated on the backend when a ticket is purchased. You will need to
+     make a request that follows this structure:
 
-      Request Headers: {
-         Content-Type: application/json
-      }
+   ```json
+   PATCH /films/:id
 
-      Request Body: {
-      "tickets_sold": 28
-      }
-      ----
-      Example Response:
-      {
-         "id": "1",
-         "title": "The Giant Gila Monster",
-         "runtime": "108",
-         "capacity": 30,
-         "showtime": "04:00PM",
-         "tickets_sold": 28,
-         "description": "A giant lizard terrorizes a rural Texas community and a heroic teenager attempts to destroy the creature.",
-         "poster": "https://www.gstatic.com/tv/thumb/v22vodart/2157/p2157_v_v8_ab.jpg"
-      }
-      ```
-      - POST the new ticket to the tickets endpoint in the database
-      ```json
-      POST /tickets
-      Request Body: {
-         "film_id": "28"
-         "number_of_tickets": 5
-      }
+   Request Headers: {
+      Content-Type: application/json
+   }
 
-      Example Response:
-      {
-         "id": "1"
-         "film_id": "28"
-         "number_of_tickets": 5
-      }
-      ```
+   Request Body: {
+   "tickets_sold": 28
+   }
+   ----
+   Example Response:
+   {
+      "id": "1",
+      "title": "The Giant Gila Monster",
+      "runtime": "108",
+      "capacity": 30,
+      "showtime": "04:00PM",
+      "tickets_sold": 28,
+      "description": "A giant lizard terrorizes a rural Texas community and a heroic teenager attempts to destroy the creature.",
+      "poster": "https://www.gstatic.com/tv/thumb/v22vodart/2157/p2157_v_v8_ab.jpg"
+   }
+   ```
 
-5. Delete a film from the server. Add a delete button next to each film in the
+   - POST the new ticket to the tickets endpoint in the database
+
+   ```json
+   POST /tickets
+   Request Body: {
+      "film_id": "28"
+      "number_of_tickets": 5
+   }
+
+   Example Response:
+   {
+      "id": "1"
+      "film_id": "28"
+      "number_of_tickets": 5
+   }
+   ```
+
+4. Delete a film from the server. Add a delete button next to each film in the
    `ul#films` menu. When the button is clicked, remove the film from the list
    and also delete the film on the server:
 
@@ -154,7 +159,7 @@ As a user, I can:
    {}
    ```
 
-6. When a movie is sold out (when there are no available tickets remaining),
+5. When a movie is sold out (when there are no available tickets remaining),
    indicate that the movie is sold out by changing the button text to "Sold
    Out". Also update the film item in the `ul#films` menu by adding a class of
    `sold-out` to the film. For reference, here's what the contents of the
@@ -175,10 +180,3 @@ attempting the bonus deliverables!**
 1. Click on a movie in the menu to replace the currently displayed movie's
    details with the new movie's details. Note that you may have to make an
    additional GET request to access the movie's details.
-
-
-
-
-
-
-
